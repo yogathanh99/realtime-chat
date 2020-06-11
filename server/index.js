@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import socketio from 'socket.io';
 import http from 'http';
+
+import { addUser, removeUser, getUser, getUserInRoom } from './users';
 import route from './route';
 
 const app = express();
@@ -12,7 +14,11 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 io.on('connection', (socket) => {
-  console.log('A user connected');
+  console.log('We have a new connection!!');
+  socket.on('join', ({ name, room }, callback) => {
+    console.log(name, room);
+    // We use callback to handle error
+  });
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
