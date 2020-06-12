@@ -1,15 +1,18 @@
 const users = [];
 
 export const addUser = ({ id, name, room }) => {
-  const nameLower = name.trim().toLowerCase();
-  const roomLower = room.trim().toLowerCase();
+  name = name.trim().toLowerCase();
+  room = room.trim().toLowerCase();
 
-  const isExistUser = users.find(
-    (user) => user.name === name && user.room === room,
+  const existingUser = users.find(
+    (user) => user.room === room && user.name === name,
   );
 
-  if (isExistUser) return { error: 'User exist in this room' };
-  const user = { id, user, room };
+  if (!name || !room) return { error: 'Username and room are required.' };
+  if (existingUser) return { error: 'Username is taken.' };
+
+  const user = { id, name, room };
+
   users.push(user);
 
   return { user };
