@@ -3,7 +3,7 @@ import cors from 'cors';
 import socketio from 'socket.io';
 import http from 'http';
 
-import { addUser, removeUser, getUser, getUserInRoom } from './users';
+import { addUser, removeUser, getUser, getUsersInRoom } from './users';
 import route from './route';
 
 const app = express();
@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
     const { user, error } = addUser({ id: socket.id, name, room });
 
     // We use callback to handle error
-    if (error) next(error);
+    if (error) return next(error);
 
     socket.emit('message', {
       user: 'admin',
@@ -43,7 +43,19 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    console.log('User is disconnected!!');
+    const user = removeUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit('message', {
+        user: 'Admin',
+        text: `${user.name} has left.`,
+      });
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      });
+    }
   });
 });
 

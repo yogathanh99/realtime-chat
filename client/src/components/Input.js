@@ -12,17 +12,34 @@ const StyleInput = styled.input`
   padding: 5%;
   width: 80%;
   font-size: 1.2em;
+
+  &:focus {
+    outline: none;
+  }
+`;
+const Button = styled.button`
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979ff;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  width: 20%;
 `;
 
 const Input = (props) => {
-  const { message, handleChange, handleKeyPress } = props;
+  const { message, setMessage, sendMessage } = props;
   return (
     <Form>
       <StyleInput
+        type='text'
+        placeholder='Type a message...'
         value={message}
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
+        onChange={(e) => setMessage(e.target.value)}
+        onKeyPress={(e) => (e.key === 'Enter' ? sendMessage(e) : null)}
       />
+      <Button onClick={(e) => setMessage(e.target.value)}>Send</Button>
     </Form>
   );
 };

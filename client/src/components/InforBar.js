@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import onlineIcon from '../icons/onlineIcon.png';
 import closeIcon from '../icons/closeIcon.png';
@@ -41,9 +40,9 @@ const InforBar = ({ room }) => {
         <h3>{room}</h3>
       </WrapperLeft>
       <WrapperRight>
-        <Link to='/'>
+        <a href='/'>
           <img src={closeIcon} alt='close icon' />
-        </Link>
+        </a>
       </WrapperRight>
     </Wrapper>
   );

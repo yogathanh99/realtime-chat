@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import querystring from 'query-string';
 import io from 'socket.io-client';
+import styled from 'styled-components';
 
 import InforBar from './InforBar';
 import Input from './Input';
+import Messages from './Messages';
 
 let socket;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1d;
+`;
+
+const Inner = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 8px;
+  height: 60%;
+  width: 35%;
+`;
 
 const Chat = ({ location }) => {
   const [name, setName] = useState('');
@@ -34,14 +54,6 @@ const Chat = ({ location }) => {
     });
   }, [messages]);
 
-  const handleChange = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const handleKeyPress = (e) => {
-    return e.key === 'Enter' ? sendMessage(e) : null;
-  };
-
   const sendMessage = (e) => {
     e.preventDefault();
 
@@ -49,19 +61,19 @@ const Chat = ({ location }) => {
       socket.emit('sendMessage', message, () => setMessage(''));
     }
   };
-  console.log(message, messages);
 
   return (
-    <div className='outerContainer'>
-      <div className='container'>
+    <Wrapper>
+      <Inner>
+        <InforBar room={room} />
+        <Messages messages={messages} name={name} />
         <Input
           message={message}
-          handleChange={handleChange}
-          handleKeyPress={handleKeyPress}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
         />
-        <InforBar room={room} />
-      </div>
-    </div>
+      </Inner>
+    </Wrapper>
   );
 };
 
