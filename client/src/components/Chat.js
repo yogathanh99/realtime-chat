@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import InforBar from './InforBar';
 import Input from './Input';
 import Messages from './Messages';
+import TextContainer from './TextContainer';
 
 let socket;
 
@@ -30,6 +31,7 @@ const Inner = styled.div`
 const Chat = ({ location }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+  const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -40,7 +42,9 @@ const Chat = ({ location }) => {
     setRoom(room);
 
     socket = io(process.env.REACT_APP_SERVER_SOCKET);
-    socket.emit('join', { name, room }, () => {});
+    socket.emit('join', { name, room }, (err) => {
+      if (err) alert(err);
+    });
 
     return () => {
       socket.emit('disconnect');
@@ -51,6 +55,10 @@ const Chat = ({ location }) => {
   useEffect(() => {
     socket.on('message', (message) => {
       setMessages([...messages, message]);
+    });
+
+    socket.on('roomData', ({ users }) => {
+      setUsers(users);
     });
   }, [messages]);
 
@@ -73,6 +81,7 @@ const Chat = ({ location }) => {
           sendMessage={sendMessage}
         />
       </Inner>
+      <TextContainer users={users} />
     </Wrapper>
   );
 };

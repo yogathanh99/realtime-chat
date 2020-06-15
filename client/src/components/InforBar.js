@@ -32,7 +32,8 @@ const OnlineIcon = styled.img`
   margin-right: 5%;
 `;
 
-const InforBar = ({ room }) => {
+const InforBar = ({ room, location }) => {
+  console.log(location);
   return (
     <Wrapper>
       <WrapperLeft>
