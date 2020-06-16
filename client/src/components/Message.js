@@ -26,7 +26,7 @@ const NameWithPaddingRight = styled(Name)`
 `;
 
 const MessageBox = styled.div`
-  background: ${(props) => (props.bgLight ? '#f3f3f3' : '#2979FF')};
+  background: ${(props) => (props.bgLight ? '#f3f3f3' : '#28d924')};
   border-radius: 20px;
   padding: 5px 20px;
   color: white;

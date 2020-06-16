@@ -19,9 +19,10 @@ const StyleInput = styled.input`
 `;
 const Button = styled.button`
   color: #fff !important;
+  font-size: 16px;
   text-transform: uppercase;
   text-decoration: none;
-  background: #2979ff;
+  background: #28d924;
   padding: 20px;
   display: inline-block;
   border: none;
