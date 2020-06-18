@@ -34,6 +34,7 @@ const Title = styled.h1`
 `;
 
 const Button = styled.button`
+  cursor: pointer;
   margin-top: 10px;
   font-size: 25px;
   font-weight: 520;

@@ -35,7 +35,7 @@ const Input = (props) => {
     <Form>
       <StyleInput
         type='text'
-        placeholder='Type a message...'
+        placeholder='Send message...'
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyPress={(e) => (e.key === 'Enter' ? sendMessage(e) : null)}

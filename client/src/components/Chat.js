@@ -72,6 +72,7 @@ const Chat = ({ location }) => {
 
   return (
     <Wrapper>
+      <TextContainer room={room} users={users} />
       <Inner>
         <InforBar room={room} />
         <Messages messages={messages} name={name} />
@@ -81,7 +82,6 @@ const Chat = ({ location }) => {
           sendMessage={sendMessage}
         />
       </Inner>
-      <TextContainer users={users} />
     </Wrapper>
   );
 };

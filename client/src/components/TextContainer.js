@@ -6,7 +6,7 @@ import onlineIcon from '../icons/onlineIcon.png';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  margin-right: 100px;
   color: white;
   height: 60%;
   justify-content: space-between;
@@ -22,22 +22,22 @@ const User = styled.div`
   margin-bottom: 50%;
 
   & img {
-    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
 
-const TextContainer = ({ users }) => {
+const TextContainer = ({ room, users }) => {
   return (
     <Wrapper>
       {users ? (
         <div>
-          <h1>People is currently in room:</h1>
+          <h1>Room {room}:</h1>
           <User>
             <h2>
               {users.map(({ name }) => (
-                <div key={name} className='activeItem'>
-                  {name}
+                <div key={name}>
                   <img alt='Online Icon' src={onlineIcon} />
+                  {name}
                 </div>
               ))}
             </h2>

@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import onlineIcon from '../icons/onlineIcon.png';
 import closeIcon from '../icons/closeIcon.png';
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #28d924;
+  background: #159639;
   border-radius: 4px 4px 0 0;
   height: 60px;
   width: 100%;
@@ -28,8 +27,11 @@ const WrapperRight = styled.div`
   justify-content: flex-end;
   margin-right: 5%;
 `;
-const OnlineIcon = styled.img`
-  margin-right: 5%;
+
+const Title = styled.h3`
+  font-family: 'Righteous', cursive;
+  font-size: 25px;
+  color: black;
 `;
 
 const InforBar = ({ room, location }) => {
@@ -37,8 +39,7 @@ const InforBar = ({ room, location }) => {
   return (
     <Wrapper>
       <WrapperLeft>
-        <OnlineIcon src={onlineIcon} alt='online icon' />
-        <h3>{room}</h3>
+        <Title>letTalk</Title>
       </WrapperLeft>
       <WrapperRight>
         <a href='/'>
