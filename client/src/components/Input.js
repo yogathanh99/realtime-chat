@@ -18,11 +18,10 @@ const StyleInput = styled.input`
   }
 `;
 const Button = styled.button`
-  color: #fff !important;
-  font-size: 16px;
-  text-transform: uppercase;
+  color: rgba(250, 250, 250, 0.5) !important;
+  font-size: 20px;
   text-decoration: none;
-  background: #28d924;
+  background: #625d5d;
   padding: 20px;
   display: inline-block;
   border: none;
