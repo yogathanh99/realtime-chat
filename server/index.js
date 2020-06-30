@@ -63,6 +63,7 @@ io.on('connection', (socket) => {
       io.to(user.room).emit('message', {
         user: 'Admin',
         text: `${user.name} has left.`,
+        left: 1,
       });
       io.to(user.room).emit('roomData', {
         room: user.room,

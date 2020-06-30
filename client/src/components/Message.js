@@ -56,6 +56,21 @@ const Message = ({ message, name }) => {
   return message.welcome ? (
     <Wrapper>
       <MessageBox bgLight>
+        <MessageText
+          style={{
+            textTransform: 'uppercase',
+            color: '#C33905',
+            fontWeight: 'bold',
+          }}
+        >
+          {ReactEmoji.emojify(message.text)}
+        </MessageText>
+      </MessageBox>
+      <NameWithPaddingLeft>{message.user}</NameWithPaddingLeft>
+    </Wrapper>
+  ) : message.left ? (
+    <Wrapper>
+      <MessageBox bgLight>
         <MessageText style={{ color: '#919191', fontStyle: 'italic' }}>
           {ReactEmoji.emojify(message.text)}
         </MessageText>
