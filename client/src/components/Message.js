@@ -53,7 +53,16 @@ const Message = ({ message, name }) => {
 
   if (lowerName === message.user) isSentCurrentUser = true;
 
-  return isSentCurrentUser ? (
+  return message.joined ? (
+    <Wrapper>
+      <MessageBox bgLight>
+        <MessageText style={{ color: 'red' }}>
+          {ReactEmoji.emojify(message.text)}
+        </MessageText>
+      </MessageBox>
+      <NameWithPaddingLeft>{message.user}</NameWithPaddingLeft>
+    </Wrapper>
+  ) : isSentCurrentUser ? (
     <Wrapper flexEnd>
       <NameWithPaddingRight>{lowerName}</NameWithPaddingRight>
       <MessageBox>
