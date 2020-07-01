@@ -11,8 +11,9 @@ letTalk is built with ReactJS, NodeJS and Socket.IO.
 
 ### Client 
 1. Change to client folder by `cd client` on Terminal
-2. Run `npm install` or `yarn install` on client folder
-3. Run `npm start` or `yarn start` on client folder
+2. Create `.env` file and add `REACT_APP_SERVER_SOCKET='http://localhost:3001/'`
+3. Run `npm install` or `yarn install` on client folder
+4. Run `npm start` or `yarn start` on client folder
 
 ***
 Write by: Vo Trung Thanh - 1751019 and Goi Chi Trung - 1751113
